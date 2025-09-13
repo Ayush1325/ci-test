@@ -1,0 +1,15 @@
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  basic:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Test secret
+        env:
+          MY_SECRET: ${{ secrets.TEST_SECRET }}
+        run: |
+          [[ x"${MY_SECRET}" == "x" ]] && echo "Value is not assigned to a variable" || echo "Value is assigned to a variable"
