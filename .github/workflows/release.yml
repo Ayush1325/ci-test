@@ -11,5 +11,4 @@ jobs:
       - name: Test secret
         env:
           MY_SECRET: ${{ secrets.TEST_SECRET }}
-        run: |
-          [[ x"${MY_SECRET}" == "x" ]] && echo "Value is not assigned to a variable" || echo "Value is assigned to a variable"
+        run: make
